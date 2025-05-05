@@ -1,0 +1,2 @@
+# MarginCalc
+Experiencing with QT
