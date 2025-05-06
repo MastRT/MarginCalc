@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QLabel,QDesktopWidget,QMainWindow,QLineEdit,QPushButton
 from PyQt5.QtCore import Qt,QPoint
-from PyQt5.QtGui import QFont
+from PyQt5.QtGui import QPixmap
 import pyperclip
 import sys
 
@@ -50,7 +50,6 @@ class Form(QMainWindow):
         # window Options
         self.setWindowFlag(Qt.FramelessWindowHint)
         self.setFixedSize(400,400)
-        #self.setWindowState(self.windowState() & Qt.WindowMinimized | Qt.WindowActive)
             
 
         # TitleBar
@@ -59,9 +58,18 @@ class Form(QMainWindow):
         "color: white;" \
         "font: 15px;")
         self.titleBar.resize(400,30)
-        self.titleBar.setText("  Margin Calculator")
+        self.titleBar.setText("      Margin Calculator")
         self.titleBar.mousePressEvent = self.PressEvent
-        self.titleBar.mouseMoveEvent = self.MoveEvent   
+        self.titleBar.mouseMoveEvent = self.MoveEvent  
+
+        # Icon
+        iconPic = QPixmap("img\margin.png")
+        iconPic = iconPic.scaled(20, 20, Qt.KeepAspectRatio, Qt.FastTransformation)
+        iconlabel = QLabel(self)
+        iconlabel.setPixmap(iconPic)
+        iconlabel.resize(iconPic.width(),iconPic.height())
+        iconlabel.move(5,5)
+         
 
         # Exit Button
         exit_lbl_btn = ExitSystemm(self)
