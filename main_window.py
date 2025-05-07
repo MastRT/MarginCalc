@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import QLabel,QDesktopWidget,QMainWindow,QLineEdit,QPushButton
 from PyQt5.QtCore import Qt,QPoint
-from PyQt5.QtGui import QPixmap
+from PyQt5.QtGui import QPixmap,QIcon
+import ctypes
 import pyperclip
 import sys
 
@@ -12,12 +13,12 @@ class ControlLabel(QLabel):
 
     def enterEvent(self, QEvent):
         # here the code for mouse hover
-        self.setStyleSheet("background-color:rgb(100,100,100);")
+        self.setStyleSheet("background-color:#506137;")
         pass
 
     def leaveEvent(self, QEvent):
         # here the code for mouse leave
-        self.setStyleSheet("background-color:rgb(112,112,112);")
+        self.setStyleSheet("background-color:#607541;")
         pass
 
 
@@ -29,12 +30,12 @@ class ExitSystemm(QLabel):
 
     def enterEvent(self, QEvent):
         # here the code for mouse hover
-        self.setStyleSheet("background-color:rgb(100,100,100);")
+        self.setStyleSheet("background-color:#506137;")
         pass
 
     def leaveEvent(self, QEvent):
         # here the code for mouse leave
-        self.setStyleSheet("background-color:rgb(112,112,112);")
+        self.setStyleSheet("background-color:#607541;")
         pass
 
     def mousePressEvent(self, event):
@@ -50,11 +51,14 @@ class Form(QMainWindow):
         # window Options
         self.setWindowFlag(Qt.FramelessWindowHint)
         self.setFixedSize(400,400)
-            
+        myappid = u'Reza.Shook.MarginCalculator.v1' # arbitrary string
+        ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
+        self.setWindowIcon(QIcon("img\margin.png"))
+        self.setStyleSheet("background-color:#94b06b")
 
         # TitleBar
         self.titleBar = QLabel(self)
-        self.titleBar.setStyleSheet("background-color:rgb(112,112,112);" \
+        self.titleBar.setStyleSheet("background-color:#607541;" \
         "color: white;" \
         "font: 15px;")
         self.titleBar.resize(400,30)
@@ -76,6 +80,7 @@ class Form(QMainWindow):
         exit_lbl_btn.setText("   X")
         exit_lbl_btn.resize(35,30)
         exit_lbl_btn.move(370,0)
+        exit_lbl_btn.setStyleSheet("background-color:#607541;")
 
         # Minimize Button
         self.minimize_lbl_btn = ControlLabel(self)
@@ -83,6 +88,7 @@ class Form(QMainWindow):
         self.minimize_lbl_btn.setText("   --")
         self.minimize_lbl_btn.resize(35,30)
         self.minimize_lbl_btn.move(330,0)
+        self.minimize_lbl_btn.setStyleSheet("background-color:#607541;")
         self.minimize_lbl_btn.mousePressEvent = self.MinimumState
 
         # label
@@ -119,6 +125,8 @@ class Form(QMainWindow):
         # textBox
         self.materialSize_txtBox = QLineEdit(self)
         self.materialSize_txtBox.move(100,70)
+        self.materialSize_txtBox.setStyleSheet("border:none;" \
+        "background-color:#bdd798")
 
         self.mediaSize_txtBox = QLineEdit(self)
         self.mediaSize_txtBox.move(100,120)
