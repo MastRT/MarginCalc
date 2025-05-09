@@ -54,17 +54,21 @@ class Form(QMainWindow):
         myappid = u'Reza.Shook.MarginCalculator.v1' # arbitrary string
         ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
         self.setWindowIcon(QIcon("img\margin.png"))
-        self.setStyleSheet("background-color:#94b06b")
+        self.setStyleSheet("background-image: url(img/background.jpg);" \
+        "background-repeat: no-repeat;" \
+        "background-position: center;")
+        self.lower()
 
         # TitleBar
         self.titleBar = QLabel(self)
-        self.titleBar.setStyleSheet("background-color:#607541;" \
+        self.titleBar.setStyleSheet("background-color:#1b1b2e;" \
         "color: white;" \
         "font: 15px;")
         self.titleBar.resize(400,30)
         self.titleBar.setText("      Margin Calculator")
         self.titleBar.mousePressEvent = self.PressEvent
         self.titleBar.mouseMoveEvent = self.MoveEvent  
+        
 
         # Icon
         iconPic = QPixmap("img\margin.png")
@@ -96,7 +100,8 @@ class Form(QMainWindow):
         materialSize_lbl.setText("عرض رول")
         materialSize_lbl.move(250,70)
         materialSize_lbl.setStyleSheet("font: 20px;" \
-        "font-family: B Koodak")
+        "font-family: B Koodak;" \
+        "background-color: transparent;")
 
         mediaSize_lbl = QLabel(self)
         mediaSize_lbl.setText("عرض کار")
