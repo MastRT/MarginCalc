@@ -13,12 +13,14 @@ class ControlLabel(QLabel):
 
     def enterEvent(self, QEvent):
         # here the code for mouse hover
-        self.setStyleSheet("background-color:#506137;")
+        self.setStyleSheet("background-color:#1a1a2c;" \
+        "color: white;")
         pass
 
     def leaveEvent(self, QEvent):
         # here the code for mouse leave
-        self.setStyleSheet("background-color:#607541;")
+        self.setStyleSheet("background-color:#24243e;" \
+        "color: white;")
         pass
 
 
@@ -30,12 +32,14 @@ class ExitSystemm(QLabel):
 
     def enterEvent(self, QEvent):
         # here the code for mouse hover
-        self.setStyleSheet("background-color:#506137;")
+        self.setStyleSheet("background-color:#1a1a2c;" \
+        "color: white;")
         pass
 
     def leaveEvent(self, QEvent):
         # here the code for mouse leave
-        self.setStyleSheet("background-color:#607541;")
+        self.setStyleSheet("background-color:#24243e;" \
+        "color: white;")
         pass
 
     def mousePressEvent(self, event):
@@ -54,14 +58,19 @@ class Form(QMainWindow):
         myappid = u'Reza.Shook.MarginCalculator.v1' # arbitrary string
         ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
         self.setWindowIcon(QIcon("img\margin.png"))
-        self.setStyleSheet("background-image: url(img/background.jpg);" \
+
+        # Background LBL
+        background_lbl = QLabel(self)
+        background_lbl.setFixedSize(400,400)
+        background_lbl.setStyleSheet("background-image: url(img/background.jpg);" \
         "background-repeat: no-repeat;" \
         "background-position: center;")
-        self.lower()
+        background_lbl.lower()
+    
 
         # TitleBar
         self.titleBar = QLabel(self)
-        self.titleBar.setStyleSheet("background-color:#1b1b2e;" \
+        self.titleBar.setStyleSheet("background-color:#24243e;" \
         "color: white;" \
         "font: 15px;")
         self.titleBar.resize(400,30)
@@ -83,8 +92,10 @@ class Form(QMainWindow):
         exit_lbl_btn = ExitSystemm(self)
         exit_lbl_btn.setText("   X")
         exit_lbl_btn.resize(35,30)
-        exit_lbl_btn.move(370,0)
-        exit_lbl_btn.setStyleSheet("background-color:#607541;")
+        exit_lbl_btn.move(365,0)
+        exit_lbl_btn.setStyleSheet("background-color:#24243e;" \
+        "color: white;")
+
 
         # Minimize Button
         self.minimize_lbl_btn = ControlLabel(self)
@@ -92,7 +103,8 @@ class Form(QMainWindow):
         self.minimize_lbl_btn.setText("   --")
         self.minimize_lbl_btn.resize(35,30)
         self.minimize_lbl_btn.move(330,0)
-        self.minimize_lbl_btn.setStyleSheet("background-color:#607541;")
+        self.minimize_lbl_btn.setStyleSheet("background-color:#24243e;" \
+        "color: white;")
         self.minimize_lbl_btn.mousePressEvent = self.MinimumState
 
         # label
@@ -101,54 +113,69 @@ class Form(QMainWindow):
         materialSize_lbl.move(250,70)
         materialSize_lbl.setStyleSheet("font: 20px;" \
         "font-family: B Koodak;" \
-        "background-color: transparent;")
+        "background-color: transparent;" \
+        "color:white;")
 
         mediaSize_lbl = QLabel(self)
         mediaSize_lbl.setText("عرض کار")
         mediaSize_lbl.move(250,120)
         mediaSize_lbl.setStyleSheet("font: 20px;" \
-        "font-family: B Koodak")
+        "font-family: B Koodak;" \
+        "color:white;")
 
         margin_lbl = QLabel(self)
         margin_lbl.setText("مارجین")
         margin_lbl.move(250,170)
         margin_lbl.setStyleSheet("font: 20px;" \
-        "font-family: B Koodak")
+        "font-family: B Koodak;" \
+        "color:white;")
 
         self.result_lbl = QLabel(self)
         self.result_lbl.setText("Null")
         self.result_lbl.move(100,250)
         self.result_lbl.setFixedSize(100,80)
         self.result_lbl.setStyleSheet("font: 20px;" \
-        "background-color: rgb(234,213,100);" \
-        "margin-left: 0px;" \
-        "margin-right: 0px;" \
+        "background-color: transparent;" \
+        "color: white;" \
         "text-align: center;" \
-        "padding-left: 20px")
+        "padding-left: 10px")
     
 
         # textBox
         self.materialSize_txtBox = QLineEdit(self)
         self.materialSize_txtBox.move(100,70)
         self.materialSize_txtBox.setStyleSheet("border:none;" \
-        "background-color:#bdd798")
+        "background-color:#e2dcf5;" \
+        "font: 20px;")
 
         self.mediaSize_txtBox = QLineEdit(self)
         self.mediaSize_txtBox.move(100,120)
+        self.mediaSize_txtBox.setStyleSheet("border: none;" \
+        "background-color:#e2dcf5;" \
+        "font: 20px;")
 
         self.margin_txtBox = QLineEdit(self)
         self.margin_txtBox.move(100,170)
+        self.margin_txtBox.setStyleSheet("border: none;" \
+        "background-color:#e2dcf5;" \
+        "font: 20px;")
 
         # button
         calc_btn = QPushButton("محاسبه",self)
         calc_btn.setStyleSheet("font: 20px;" \
-        "font-family: B Koodak")
+        "font-family: B Koodak;" \
+        "background-color: #24243e;" \
+        "color: white;" \
+        "border: none;")
         calc_btn.move(250,250)
         calc_btn.clicked.connect(self.calculateMargin)
 
         calc_btn = QPushButton("کپی",self)
         calc_btn.setStyleSheet("font: 20px;" \
-        "font-family: B Koodak")
+        "font-family: B Koodak;" \
+        "background-color: #24243e;" \
+        "color: white;" \
+        "border: none;")
         calc_btn.move(250,300)
         calc_btn.clicked.connect(self.copyToClipboard)
 
