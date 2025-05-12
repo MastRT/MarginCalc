@@ -54,7 +54,7 @@ class Form(QMainWindow):
         # window Options
         self.setWindowFlag(Qt.FramelessWindowHint)
         self.setFixedSize(400,400)
-        myappid = u'Reza.Shook.MarginCalculator.v1' # arbitrary string
+        myappid = u'Reza.Shook.MarginCalculator.v1' #App ID
         ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
         self.setWindowIcon(QIcon("img\margin.png"))
 
@@ -115,6 +115,7 @@ class Form(QMainWindow):
         "background-color: transparent;" \
         "color:white;")
 
+        # Input label
         mediaSize_lbl = QLabel(self)
         mediaSize_lbl.setText("عرض کار")
         mediaSize_lbl.move(250,120)
@@ -137,7 +138,8 @@ class Form(QMainWindow):
         "background-color: transparent;" \
         "color: white;" \
         "text-align: center;" \
-        "padding-left: 10px")
+        "padding-left: 10px;" \
+        "text-align: center;")
 
         # Created with love
         author_lbl = QLabel(self)
